@@ -27,20 +27,8 @@
     "docker --version"
     "docker compose version"
 ![alt text](image-4.png)
-### 6. Upload Folder Project ke EC2 melalui PowerShell
-    JALANKAN
-    "scp -i "D:\Study Recap\uas-2388010008-key.pem" -r "D:\Study Recap\uas-cloud" ubuntu@IP PUBLIC TERBARU:~/"
-
-    LALU JALANKAN DOCKER COMPOSE
-    "cd ~/uas-cloud"
-    "cp .env.example .env"
-    "docker compose config"
-    "docker compose up -d --build"
-
-    LALU CEK CONTAINER
-    "docker compose ps"
 ![alt text](image-5.png)
-### 7. Set Up Docker Hub
+### 6. Set Up Docker Hub
     BUAT REPOSITORY BARU PADA DOCKER HUB
     "sahrieellnr/uas-static"
     "sahrieellnr/uas-dinamic"
@@ -51,16 +39,7 @@
     "Permission : Read & Write"
 
 ![alt text](image-6.png)
-### 8. Login Docker ke EC2 Melalui PowerShell
-    "docker login -u sahrieellnr"
-    (Saat diminta password, paste Docker Hub access token, bukan password akun biasa.)
-
-    BUILD IMAGE DARI PROJECT
-    Pastikan Posisi Folder di (cd ~/uas-cloud)
-    lalu build "docker compose build static-cv dynamic-app"
-    lalu push image ke docker hub "docker compose push static-cv dynamic-app"
-![alt text](image-7.png)
-### 9. Set Up Github Repository
+### 7. Set Up Github Repository
     BUAT REPOSITORY BARU
     https://github.com/sahrieellnadzif-wq/uas-adm.git
 
@@ -72,7 +51,7 @@
     "git commit -m "Initial UAS cloud deployment project""
     "git push -u origin main"
 ![alt text](image-8.png)
-### 10. Set Up Github Secret
+### 8. Set Up Github Secret
     DOCKERHUB_USERNAME = sahrieellnr
     DOCKERHUB_TOKEN    = token Docker Hub kamu
     EC2_HOST           = IP public EC2 terbaru
@@ -85,7 +64,7 @@
     MYSQL_ROOT_PASSWORD = isi MYSQL_ROOT_PASSWORD dari .env
     MYSQL_PASSWORD      = isi MYSQL_PASSWORD dari .env
 ![alt text](image-9.png)
-### 11. Set Up Github Action
+### 9. Set Up Github Action
     ".github/workflows/deploy-static.yml"
     ".github/workflows/deploy-dynamic.yml"
 
@@ -101,7 +80,7 @@
     "git commit -m "Add GitHub Actions deployment workflows""
     "git push origin main"
 ![alt text](image-10.png))
-### 12. Tes Menjalankan Web Static & Dynamic
+### 10. Tes Menjalankan Web Static & Dynamic
     Static
 ![alt text](image-11.png)
 
